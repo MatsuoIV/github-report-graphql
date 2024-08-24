@@ -1,0 +1,5 @@
+commit_data
+dist
+node_modules
+.env
+repo_list*.txt

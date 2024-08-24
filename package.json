@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "build": "node esbuild.js"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "esbuild": "^0.23.1",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@types/node": "^22.5.0",
+    "node-fetch": "^3.3.2"
+  }
+}
