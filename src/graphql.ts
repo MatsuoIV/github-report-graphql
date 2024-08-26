@@ -1,7 +1,7 @@
-import { CommitResponse } from "./types";
+import { CommitResponse, RepoResponse } from "./types";
 import loginData from './utils';
 
-const load = async (query: any): Promise<CommitResponse> => {
+const load = async (query: any): Promise<CommitResponse | RepoResponse> => {
     const res = await fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {

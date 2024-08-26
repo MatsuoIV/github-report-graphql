@@ -31,13 +31,36 @@ type CommitContent = {
 
 type CommitResponseMetadata = {
     endCursor: string,
+    hasNextPage: boolean
+};
+
+type RepoResponse = {
+    data: {
+        repositoryOwner: {
+            repositories: {
+                totalCount: number,
+                pageInfo: RepoResponseMetadata,
+                nodes: RepoContent[]
+            }
+        }
+    }
+};
+
+type RepoContent = {
+    name: string,
+    description: string
+};
+
+type RepoResponseMetadata = {
     hasNextPage: boolean,
-    hasPreviousPage: boolean,
-    startCursor: string
+    endCursor: string
 };
 
 export {
     CommitResponse,
     CommitResponseMetadata,
-    CommitContent
+    CommitContent,
+    RepoResponse,
+    RepoResponseMetadata,
+    RepoContent
 };

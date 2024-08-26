@@ -16,8 +16,6 @@ const generateQuery = (repoName: string, baseDate: string, endCursor?: string): 
               pageInfo {
                 endCursor
                 hasNextPage
-                hasPreviousPage
-                startCursor
               } 
               edges {
                 node {
@@ -43,4 +41,23 @@ const generateQuery = (repoName: string, baseDate: string, endCursor?: string): 
   }`;
 };
 
-export { generateQuery };
+const getRepoQuery = (endCursor?: string): string => {
+  return `query {
+    repositoryOwner(login: "${owner}") {
+      repositories(first:100, orderBy: { field: NAME, direction: ASC }${(endCursor) ? `, after: "${endCursor}"` : ''}) {
+        totalCount
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes{
+          name
+          description
+        }
+      }
+    }
+  }
+  `;
+};
+
+export { generateQuery, getRepoQuery };
